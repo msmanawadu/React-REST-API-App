@@ -10,6 +10,7 @@ class Person extends Component {
             results: []
         };
     }
+
     
     componentDidMount() {
         fetch('https://api.randomuser.me/')
@@ -28,6 +29,17 @@ class Person extends Component {
                 });
             } 
         )
+    }
+
+    getValidYears = () => {
+        const amount = this.state.results[0].dob.age
+        const validity = amount / 2
+        return validity
+    }
+
+    getIVANumber = () => {
+        var code = this.state.results[0].location.postcode
+        return ++code
     }
 
     render(){
@@ -56,7 +68,7 @@ class Person extends Component {
                     <table className = "table table-bordered table-responsive">
                     <tr>
                         <td><span className="text-secondary font-weight-bold">Title: 
-            </span> <span className="font-weight-bold">{results[0].name.title}</span></td>
+            </span> <span className="font-weight-bold">{results[0].name.title}.</span></td>
                         <td><span className="text-secondary font-weight-bold">Full Name: 
             </span> <span className="font-weight-bold">{results[0].name.first} {' '} {results[0].name.last}</span></td>
                         <td><span className="text-secondary font-weight-bold">Gender: 
@@ -92,9 +104,10 @@ class Person extends Component {
                         <section className = "nauticalInfo">
                         <h3 className="mx-2">Nautical Info</h3>
                         <td><span className="text-secondary font-weight-bold">Registration valid for: 
-                        </span> <span className="font-weight-bold">...</span></td>
+            </span> <span className="font-weight-bold">{this.getValidYears()} Years</span></td>
                         <td><span className="text-secondary font-weight-bold">IVA No: 
-                        </span> <mark> <span className="font-weight-bold">...</span></mark> </td>
+                        </span><del className="font-weight-bold">{results[0].location.postcode}</del>{' '}
+                        <mark><span className="font-weight-bold">{this.getIVANumber()}</span></mark> </td>
                         </section>
                     </tr>       
                     <tr>
