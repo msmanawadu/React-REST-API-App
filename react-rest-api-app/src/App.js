@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <div className = "display-3"> Bootstrap Integrated !</div>
+        <p className = "lead"> Successful Integration of 
+        Bootstrap to React.js Project</p>
       </header>
     </div>
   );
