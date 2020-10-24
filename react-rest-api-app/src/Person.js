@@ -24,7 +24,7 @@ class Person extends Component {
             },
             (error) => {
                 this.setState({
-                    isLoaded: false,
+                    isLoaded: true,
                     error
                 });
             } 
